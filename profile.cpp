@@ -1,4 +1,6 @@
 #include <iostream>
+#include "profile.h"
+
 
 int main() {
 	Profile p1("marco", "Marco");    
