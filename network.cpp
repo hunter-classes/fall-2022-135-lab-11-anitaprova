@@ -6,6 +6,11 @@
 
 Network::Network() {
 	numUsers = 0;
+	for (int i = 0; i < MAX_USERS; i++) {
+        	for(int j = 0; j < MAX_USERS; j++) {
+                        following[i][j] = false;
+                }
+        }
 }
 
 int Network::findID (std::string usrn) {
@@ -35,4 +40,12 @@ bool Network::addUser(std::string usrn, std::string dspn) {
 	else {
 		return false;
 	}
+}
+
+bool Network::follow(string usrn1, string usrn2){
+        if()
+}
+
+void Network::printDot(){
+        std::cout << "" << std::endl;
 }
