@@ -1,18 +1,29 @@
 #include <iostream>
 #include "network.h"
 
-int main() {
-  Network nw;
-  cout << nw.addUser("mario", "Mario") << endl;     // true (1)
-  cout << nw.addUser("luigi", "Luigi") << endl;     // true (1)
+Network::Network() {
+	numUsers = 0;
+	for (int i = 0; i < MAX_USERS; i++) {
+		for(int j = 0; j < MAX_USERS; j++) {
+			following[i][j] = false;
+		}
+	}
+}
 
-  cout << nw.addUser("mario", "Mario2") << endl;    // false (0)
-  cout << nw.addUser("mario 2", "Mario2") << endl;  // false (0)
-  cout << nw.addUser("mario-2", "Mario2") << endl;  // false (0)
+bool Network::addUser(string usrn, string dspn) {
+	if(usrn != "" && profiles.length != MAX_USERS) {
+		
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 
-  for(int i = 2; i < 20; i++)
-      cout << nw.addUser("mario" + to_string(i),
-                 "Mario" + to_string(i)) << endl;   // true (1)
+bool Network::follow(string usrn1, string usrn2){
+	if()
+}
 
-  cout << nw.addUser("yoshi", "Yoshi") << endl;     // false (0)
+void Network::printDot(){
+	std::cout << "" << std::endl;
 }
