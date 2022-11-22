@@ -1,18 +1,38 @@
 #include <iostream>
+#include <string>
+#include <cctype>
+#include "profile.h"
 #include "network.h"
 
-int main() {
-  Network nw;
-  cout << nw.addUser("mario", "Mario") << endl;     // true (1)
-  cout << nw.addUser("luigi", "Luigi") << endl;     // true (1)
+Network::Network() {
+	numUsers = 0;
+}
 
-  cout << nw.addUser("mario", "Mario2") << endl;    // false (0)
-  cout << nw.addUser("mario 2", "Mario2") << endl;  // false (0)
-  cout << nw.addUser("mario-2", "Mario2") << endl;  // false (0)
+int Network::findID (std::string usrn) {
+	for (int i = 0; i < MAX_USERS; i++) {
+		if(profiles[i].getUsername() == usrn) {
+			return i;
+		}
+	}
+	return -1;
+}
 
-  for(int i = 2; i < 20; i++)
-      cout << nw.addUser("mario" + to_string(i),
-                 "Mario" + to_string(i)) << endl;   // true (1)
+bool alphanumeric(std::string s) {
+	for(int i = 0; i < s.length(); i++) {
+		if(isalpha(s[i]) == false && isdigit(s[i]) == false) {
+			return false;
+		}
+	}
+	return true;
+}
 
-  cout << nw.addUser("yoshi", "Yoshi") << endl;     // false (0)
+bool Network::addUser(std::string usrn, std::string dspn) {
+	if(alphanumeric(usrn) == true && findID(usrn) == -1 && numUsers != MAX_USERS){
+		profiles[numUsers] = {usrn, dspn};
+		numUsers++;
+		return true;
+	}
+	else {
+		return false;
+	}
 }
