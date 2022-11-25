@@ -4,6 +4,8 @@
 #include "profile.h"
 #include "network.h"
 
+int ID = 0;
+
 Network::Network() {
 	numUsers = 0;
 	for (int i = 0; i < MAX_USERS; i++) {
@@ -43,8 +45,8 @@ bool Network::addUser(std::string usrn, std::string dspn) {
 }
 
 bool Network::follow(std::string usrn1, std::string usrn2){
-    if(findID(usrn1) != -1 && findID(usrn2) != -1) {
-		following[findID(usrn1)][findID(usrn2)] == true;
+    	if(findID(usrn1) != -1 && findID(usrn2) != -1) { //checks if both users exist 
+		following[findID(usrn1)][findID(usrn2)] = true;
 		return true;
 	}
 	else{return false;}
@@ -52,14 +54,14 @@ bool Network::follow(std::string usrn1, std::string usrn2){
 
 void Network::printDot(){
 	std::cout << "digraph { \n";
-	for(int i = 0; i < MAX_USERS; i++) { //prints the usernames
-		std::cout << "\t\"@" << following[i][0] << "\"" << std::endl;
+	for(int i = 0; i < numUsers; i++) { //prints the usernames
+		std::cout << "\t\"@" << profiles[i].getUsername() << "\"" << std::endl;
 	}	
-
+	std::cout << "\n";
 	for(int i = 0; i < MAX_USERS; i++) {
 		for(int j = 0; j < MAX_USERS; j++) {
 			if(following[i][j] == true) {
-				std::cout << "\"@" << following[i][0] << "\" -> \"@" << following[0][j] << "\"" << std::endl;
+				std::cout << "\t\"@" << profiles[i].getUsername() << "\" -> \"@" << profiles[j].getUsername() << "\"" << std::endl;
 			}
 		}
 	}
