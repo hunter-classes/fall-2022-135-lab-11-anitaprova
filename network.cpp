@@ -4,8 +4,6 @@
 #include "profile.h"
 #include "network.h"
 
-int ID = 0;
-
 Network::Network() {
 	numUsers = 0;
 	for (int i = 0; i < MAX_USERS; i++) {
