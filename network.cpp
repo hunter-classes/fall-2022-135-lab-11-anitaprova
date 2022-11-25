@@ -43,7 +43,7 @@ bool Network::addUser(std::string usrn, std::string dspn) {
 }
 
 bool Network::follow(std::string usrn1, std::string usrn2){
-    if(findID(usrn1) == true && findID(usrn2) == true) {
+    if(findID(usrn1) != -1 && findID(usrn2) != -1) {
 		following[findID(usrn1)][findID(usrn2)] == true;
 		return true;
 	}
@@ -51,9 +51,9 @@ bool Network::follow(std::string usrn1, std::string usrn2){
 }
 
 void Network::printDot(){
-	std::cout << "digraph { \n\t" << std::endl;
+	std::cout << "digraph { \n";
 	for(int i = 0; i < MAX_USERS; i++) { //prints the usernames
-		std::cout << "\"@" << following[i][0] << "\"" << std::endl;
+		std::cout << "\t\"@" << following[i][0] << "\"" << std::endl;
 	}	
 
 	for(int i = 0; i < MAX_USERS; i++) {
