@@ -4,7 +4,7 @@
 #include "network.h"
 
 int main() {
-    /*Profile p1("marco", "Marco");    
+    Profile p1("marco", "Marco");    
     std::cout << p1.getUsername() << std::endl; // marco
     std::cout << p1.getFullName() << std::endl; // Marco (@marco)
 
@@ -21,13 +21,12 @@ int main() {
 	std::cout << nw.addUser("mario-2", "Mario2") << std::endl;  // false (0)
 
 	for(int i = 2; i < 20; i++)
-    std::cout << nw.addUser("mario" + std::to_string(i), 
+    	std::cout << nw.addUser("mario" + std::to_string(i), 
     	"Mario" + std::to_string(i)) << std::endl;   // true (1)
 
 	std::cout << nw.addUser("yoshi", "Yoshi") << std::endl;     // false (0)
-		*/
 		
-	Network nw;
+		
     // add three users
     nw.addUser("mario", "Mario");
     nw.addUser("luigi", "Luigi");

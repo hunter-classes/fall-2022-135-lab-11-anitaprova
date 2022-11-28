@@ -13,7 +13,7 @@ Profile::Profile(std::string usrn, std::string dspn) {
 }
 
 std::string Profile::getUsername() {
-	return username;
+	return username + "";
 }
 
 std::string Profile::getFullName() {
