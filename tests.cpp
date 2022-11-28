@@ -6,15 +6,18 @@
 
 TEST_CASE("TASK A") {
 	Profile p1("annie12", "Anna");
-	CHECK(p1.getUsername() == "annie12");
+	std::string s = p1.getUsername();
+	CHECK(s == "annie12");
 	CHECK(p1.getFullName() == "Anna (@annie12)");
 
 	p1.setDisplayName("Annabelle12");
-	CHECK(p1.getUsername() == "Annabelle12");
+	s = p1.getUsername();
+	CHECK(s == "Annabelle12");
 	CHECK(p1.getFullName() == "Anna (@Annabelle12)");
 
 	Profile p2();
-	CHECK(p2.getUsername() == "");
+	//s = p2.getUsername();
+	CHECK(s == "");
 }
 
 /*
